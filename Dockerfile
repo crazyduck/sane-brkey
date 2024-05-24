@@ -9,6 +9,7 @@ ARG SANEUSERPASS
 RUN apt-get update \
 && apt-get install -y \
     sudo \
+    whois \
 && apt-get clean \
 && rm -rf /var/lib/apt/lists/*
 
