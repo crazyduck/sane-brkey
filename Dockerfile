@@ -1,11 +1,13 @@
 ARG MAINTAINER
-FROM debian:stable-slim
+FROM python:bookworm
 MAINTAINER $MAINTAINER
+
+ARG BRSCAN4_DEB=https://download.brother.com/pub/com/linux/linux/packages/brscan4-0.4.11-1.amd64.deb
 
 ARG SANEUSER
 ARG SANEUSERPASS
 
-# Install Packages (basic tools, cups, basic drivers, HP drivers)
+# Install Packages 
 RUN apt-get update \
 && apt-get install -y \
     sudo \
@@ -14,6 +16,7 @@ RUN apt-get update \
     \
     sane \
     sane-utils \
+    poppler-utils \
 && apt-get clean \
 && rm -rf /var/lib/apt/lists/*
 
@@ -27,6 +30,9 @@ RUN useradd \
   $SANEUSER \
 && sed -i '/%sudo[[:space:]]/ s/ALL[[:space:]]*$/NOPASSWD:ALL/' /etc/sudoers
 
+# get brscan4
+RUN wget -O /tmp/brscan4-0.4.11-1.amd64 $BRSCAN4_DEB
+
 # Copy Sane conf
 #COPY --chown=root:root init.sh /init.sh
 # Copy init.sh
@@ -38,6 +44,9 @@ EXPOSE 6566
 
 #EXPOSE 5353
 #EXPOSE 139
+
+VOLUME /output
+VOLUME /consume
 
 # Default shell
 CMD ["/bin/bash","/init.sh"]
