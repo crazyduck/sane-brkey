@@ -3,7 +3,7 @@ FROM python:bookworm
 MAINTAINER $MAINTAINER
 
 ARG BRSCAN4_DEB=https://download.brother.com/pub/com/linux/linux/packages/brscan4-0.4.11-1.amd64.deb
-
+ARG BRSCAN4KEY_DEB=https://download.brother.com/pub/com/linux/linux/packages/brscan-skey-0.3.2-0.amd64.deb
 ARG SANEUSER
 ARG SANEUSERPASS
 
