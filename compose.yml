@@ -1,5 +1,5 @@
 services:
-  sane-brkey:
+  sane:
     build:
       context: .
       args:
