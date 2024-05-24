@@ -10,6 +10,7 @@ RUN apt-get update \
 && apt-get install -y \
     sudo \
     whois \
+    procps \
     \
     sane \
     sane-utils \
