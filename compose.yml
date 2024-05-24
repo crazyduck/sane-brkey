@@ -1,0 +1,9 @@
+services:
+  sane-brkey:
+    build:
+      context: .
+      args:
+        - SANEUSER = scan
+        - SANEUSERPASS = scanpw
+    ports:
+      - "6566:6566" # SANE network scanner daemon
