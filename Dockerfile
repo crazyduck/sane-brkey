@@ -32,6 +32,7 @@ RUN useradd \
 
 # get brscan4
 RUN wget -O /tmp/brscan4-0.4.11-1.amd64 $BRSCAN4_DEB
+RUN wget -O /tmp/brscan-skey-0.3.2-0.amd64.deb $BRSCAN4KEY_DEB
 
 # Copy Sane conf
 #COPY --chown=root:root init.sh /init.sh
