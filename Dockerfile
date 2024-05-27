@@ -31,8 +31,11 @@ RUN useradd \
 && sed -i '/%sudo[[:space:]]/ s/ALL[[:space:]]*$/NOPASSWD:ALL/' /etc/sudoers
 
 # get brscan4
-RUN wget -O /tmp/brscan4-0.4.11-1.amd64 $BRSCAN4_DEB
-RUN wget -O /tmp/brscan-skey-0.3.2-0.amd64.deb $BRSCAN4KEY_DEB
+RUN wget -O /tmp/brscan4.amd64.deb $BRSCAN4_DEB && dpkg -i /tmp/brscan4.amd64.deb
+
+RUN wget -O /tmp/brscan-skey.amd64.deb $BRSCAN4KEY_DEB
+# configure sane
+RUN brsaneconfig4 -a name=dcp7065 model=DCP7065DN nodename=brodrucker && echo "192.168.10.0/24" >> /etc/sane.d/saned.conf
 
 # Copy Sane conf
 #COPY --chown=root:root init.sh /init.sh
