@@ -13,6 +13,7 @@ RUN apt-get update \
     sudo \
     whois \
     procps \
+    dbus \
     \
     # sane \
     sane-utils \

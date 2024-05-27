@@ -1,6 +1,9 @@
 #!/bin/bash
 
-echo "Init.sh called"
+echo "Starting sane in standalone daemon mode"
 
+#saned -l
 # keep container for debug purposes awake
-saned -l
+while true; do
+    sleep 1
+done
