@@ -14,7 +14,7 @@ RUN apt-get update \
     whois \
     procps \
     \
-    sane \
+    # sane \
     sane-utils \
     poppler-utils \
 && apt-get clean \
