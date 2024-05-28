@@ -59,7 +59,8 @@ COPY services/ /etc/sv/
 COPY runit_startup.sh /
 
 RUN ln -s /etc/sv/dbus /etc/service/ \
-    && ln -s /etc/sv/saned /etc/service/
+    && ln -s /etc/sv/saned /etc/service/ \
+    && chmod +x /runit_startup.sh
 
 # Expose Ports
 EXPOSE 6566 10000 10001
